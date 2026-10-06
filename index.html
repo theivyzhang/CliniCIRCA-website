@@ -99,7 +99,7 @@
       font-size: 14px; color: var(--text-soft); font-weight: 500;
     }
     nav.top .links a:hover { color: var(--accent); text-decoration: none; }
-    @media (max-width: 860px) {
+    @media (max-width: 980px) {
       nav.top .links { display: none; }
     }
 
@@ -268,6 +268,32 @@
     .method-details h3 { margin-top: 0; }
     .method-details ul { padding-left: 18px; margin: 12px 0; }
     .method-details li { color: var(--text-soft); margin-bottom: 8px; }
+
+    /* ===== Dataset ===== */
+    .dataset-grid {
+      display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      gap: 48px; align-items: center;
+    }
+    @media (max-width: 820px) { .dataset-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; } }
+    .icd-list {
+      list-style: none; padding: 0; margin: 4px 0 18px;
+      background: white; border: 1px solid var(--border);
+      border-radius: 10px; overflow: hidden;
+    }
+    .icd-list li {
+      display: grid; grid-template-columns: 78px 1fr; gap: 12px; align-items: baseline;
+      padding: 10px 16px; border-top: 1px solid var(--border);
+      font-size: 14px; color: var(--text-soft);
+    }
+    .icd-list li:first-child { border-top: 0; }
+    .icd-list code { font-size: 12.5px; font-weight: 500; color: var(--primary); }
+    .dataset-fig {
+      background: white; border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px;
+      box-shadow: var(--shadow);
+      max-width: 380px; width: 100%; justify-self: center;
+    }
+    .dataset-fig img { width: 100%; height: auto; display: block; }
 
     /* ===== Example ===== */
     .example-fig {
@@ -678,6 +704,7 @@
     <div class="links">
       <a href="#abstract">Abstract</a>
       <a href="#challenge">Challenge</a>
+      <a href="#dataset">Dataset</a>
       <a href="#method">Method</a>
       <a href="#example">Example</a>
       <a href="#results">Results</a>
@@ -797,13 +824,34 @@
   </div>
 </section>
 
+<!-- ============ DATASET ============ -->
+<section id="dataset" class="soft">
+  <div class="container dataset-grid">
+    <div>
+      <span class="eyebrow">Dataset</span>
+      <h2>Mental health admissions from <span style="white-space:nowrap">MIMIC-III</span></h2>
+      <p>CliniCIRCA is built on <a href="https://physionet.org/content/mimiciii/1.4/" target="_blank" rel="noopener">MIMIC-III v1.4</a>, a de-identified critical-care database from Beth Israel Deaconess Medical Center (2001–2012), accessed through PhysioNet's credentialed data-use agreement. An admission is included if it has a discharge summary and at least one diagnosis from the ICD-9-CM Mental Disorders chapter (codes 290–319):</p>
+      <ul class="icd-list">
+        <li><code>290–294</code><span>Organic psychotic conditions</span></li>
+        <li><code>295–299</code><span>Other psychoses</span></li>
+        <li><code>300–316</code><span>Neurotic disorders, personality disorders, and other nonpsychotic mental disorders</span></li>
+        <li><code>317–319</code><span>Intellectual disabilities</span></li>
+      </ul>
+      <p>This yields <strong>14,882 discharge summaries from 12,273 patients</strong>, spanning primary psychiatric admissions and medical or surgical admissions with psychiatric comorbidity. Three structured fields (date of birth, admission date, and discharge date) serve as temporal anchors.</p>
+    </div>
+    <figure class="dataset-fig" style="margin:0">
+      <img src="static/images/CliniCIRCA_images/CliniCIRCA_Dataset.png" alt="Dataset curation: MIMIC-III admissions with ICD-9 codes 290–319, their discharge summaries, and date anchors (admission date, discharge date, date of birth)">
+    </figure>
+  </div>
+</section>
+
 <!-- ============ METHOD ============ -->
-<section id="method" class="soft">
+<section id="method">
   <div class="container">
     <span class="eyebrow">Method</span>
     <h2>Three stages: what happened, when it happened, and how to render it</h2>
 
-    <p class="section-intro">CliniCIRCA is a sequential framework of three LLM stages. Each stage receives the previous stage's output and has a single main task. Raw discharge summaries from <a href="https://physionet.org/content/mimiciii/1.4/" target="_blank" rel="noopener">MIMIC-III v1.4</a> go in without chunking, section parsing, or normalization. Three structured fields (date of birth, admission date, and discharge date) serve as temporal anchors.</p>
+    <p class="section-intro">CliniCIRCA is a sequential framework of three LLM stages. Each stage receives the previous stage's output and has a single main task. Raw discharge summaries go in without chunking, section parsing, or normalization.</p>
 
     <figure class="method-fig">
       <img src="static/images/CliniCIRCA_images/CliniCIRCA_Method.png" alt="CliniCIRCA overview: dataset curation from MIMIC-III, a three-stage LLM pipeline, and human plus LLM-judge evaluation">
@@ -834,7 +882,7 @@
 </section>
 
 <!-- ============ EXAMPLE ============ -->
-<section id="example">
+<section id="example" class="soft">
   <div class="container">
     <span class="eyebrow">Example</span>
     <h2>From discharge note to tagged timeline to readable summary</h2>
@@ -875,7 +923,7 @@
 </section>
 
 <!-- ============ RESULTS ============ -->
-<section id="results" class="soft">
+<section id="results">
   <div class="container">
     <span class="eyebrow">Results</span>
     <h2>Gemini 2.5 Pro leads, and temporal tagging separates the field</h2>
@@ -955,7 +1003,7 @@
 </section>
 
 <!-- ============ SILVER SUPERVISION ============ -->
-<section id="supervision">
+<section id="supervision" class="soft">
   <div class="container">
     <span class="eyebrow">Silver Supervision</span>
     <h2>1,000 silver timelines as training data for smaller models</h2>
@@ -1000,7 +1048,7 @@
 </section>
 
 <!-- ============ TAKEAWAYS ============ -->
-<section id="takeaways" class="soft">
+<section id="takeaways">
   <div class="container">
     <span class="eyebrow">Takeaways</span>
     <h2>Built for auditability, not just accuracy</h2>
@@ -1040,7 +1088,7 @@
 </section>
 
 <!-- ============ BIBTEX ============ -->
-<section id="bibtex">
+<section id="bibtex" class="soft">
   <div class="container" style="max-width: 820px;">
     <span class="eyebrow">Cite</span>
     <h2>BibTeX</h2>
