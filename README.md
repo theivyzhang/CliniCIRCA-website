@@ -9,7 +9,7 @@
   <a href="https://nimraishfaq.com/">Nimra Ishfaq</a><sup>2</sup>,
   <a href="https://mohit3011.github.io/">Mohit Chandra</a><sup>1</sup>,
   <a href="https://www.linkedin.com/in/santiago-alvarez-lesmes-5a1744244/">Santiago Alvarez Lesmes</a><sup>3</sup>,
-  <a href="https://adamcoscia.com/">Adam Coscia</a><sup>1</sup>,
+  <a href="https://adamcoscia.com/">Adam Coscia</a><sup>4</sup>,
   <a href="https://www.linkedin.com/in/khatiya-moon-1239a6408/">Khatiya Chelidze Moon</a><sup>3</sup>,
   <a href="https://xiaohanding.com/">Xiaohan Ding</a><sup>1</sup>,
   <a href="http://www.munmund.net/">Munmun De Choudhury</a><sup>1</sup>
@@ -18,7 +18,8 @@
 <p align="center">
   <sup>1</sup>Georgia Institute of Technology &nbsp;·&nbsp;
   <sup>2</sup>University of Texas at Austin &nbsp;·&nbsp;
-  <sup>3</sup>Northwell Health
+  <sup>3</sup>Northwell Health &nbsp;·&nbsp;
+  <sup>4</sup>Stevens Institute of Technology
 </p>
 
 <p align="center">
